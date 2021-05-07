@@ -9,21 +9,14 @@ class App extends Component{
     constructor() {
         super();
         this.state = {
-            monsters : [
-                {
-                    name : 'Frank',
-                    id : 'asc1'
-                },
-                {
-                    name : 'Dracular',
-                    id : 'asr2'
-                },
-                {
-                    name : 'Frank',
-                    id : 'as1w'
-                }
-            ]
+            monsters : []
         }
+    }
+
+    //when this component mounts it calls this method
+    //fetch from the url, covert it to JSON format, add to user array and replace it within monsters array
+    componentDidMount() {
+        fetch('http://jsonplaceholder.typicode.com/users').then(response => response.json()).then(users => this.setState({monsters : users}));
     }
 
     render() {
